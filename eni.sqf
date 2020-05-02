@@ -14,11 +14,11 @@ for "_i" from 0 to 2 do {
 while {count _patrols > 0} do {
 	sleep _t2;
 	for "_i" from 0 to (count _patrols) - 1 do {
-		private _patrol = _patrols select _i; 
+		private _patrol = _patrols select _i;
     	if ((count units _patrol) != 0)
 		then {
 			for "_j" from count waypoints _patrol - 1 to 0 step -1 do { deleteWaypoint [_patrol, _j];};
-			[_patrol, markerPos "marker_0", 1500] call bis_fnc_taskpatrol;} 
+			[_patrol, markerPos "marker_0", 1500] call bis_fnc_taskpatrol;}
 		else {_patrols set [_i, _grp call BIS_fnc_spawnGroup];
 			[_patrols select _i, markerPos "marker_0", 1500] call bis_fnc_taskpatrol};
 	};

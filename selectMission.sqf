@@ -1,7 +1,7 @@
 _Display = call BIS_fnc_displayMission;
 
 private _positionMission = [];
-for "_i" from 0 to 1 {
+for "_i" from 0 to 1 do {
     _positionMission pushBack (markerPos str("mission" +_i));
 };
 
