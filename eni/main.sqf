@@ -10,17 +10,17 @@ run = {
     waitUntil { scriptDone _handle };
 };
 
-patrols_end = false; // variable to start and stop patrols
-patrols_groups = [];
+patrolsEnd = false; // variable to start and stop patrols
+patrolsGroups = [];
 dificulty = 0.5;
 
 private _delay = 30; // s (time between each loops)
 
-while {!patrols_end}
+while {!patrolsEnd}
 do
 {
-	"auto_patrols\creation.sqf" call run;
-	"auto_patrols\check_alive.sqf" call run;
-	"auto_patrols\patrols.sqf" call run;
+	"eni\spawn.sqf" call run;
+	"eni\checkup.sqf" call run;
+	"eni\patrols.sqf" call run;
 	sleep _delay;
 };

@@ -11,4 +11,4 @@
 	};
 	// set nexts waypoints
 	[_x, markerPos "marker_0", 1500] call bis_fnc_taskpatrol;
-} forEach patrols_groups;
+} forEach patrolsGroups;
