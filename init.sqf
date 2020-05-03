@@ -1,0 +1,1 @@
+execVM "infos.sqf";
