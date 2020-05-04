@@ -38,11 +38,11 @@ private _grp_spawn_cap = 2; // max number of group that can spawn each turn
 while {true}
 do
 {
-	// systemChat format ["Groups : %1", count _patrolsGroups];
-	// systemChat format ["Distance : %1", [_position, _human_players] call _closest_player_distance];
-
 	private _human_players = allPlayers - entities "HeadlessClient_F"; // removing Headless Clients
 	private _groupsNumbers = floor (1 + (count _human_players) * _local_dificulty);
+
+	// systemChat format ["Groups : %1", count _patrolsGroups];
+	// systemChat format ["Distance : %1", [_position, _human_players] call _closest_player_distance];
 	// SPAWN
 	if (([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius))
 	then
@@ -54,10 +54,10 @@ do
 			// systemChat "Spawn 1 group";
 			private _pos = [[[_position, _radius]],[]] call BIS_fnc_randomPos;
 			// systemChat format ["Position test : %1", _pos];
-			while {[_pos, _human_players] call _closest_player_distance < _min_dist}
+			while {([_pos, _human_players] call _closest_player_distance < _min_dist) || ([_pos, _human_players] call _closest_player_distance > _max_dist)}
 			do
 			{
-				_pos = [[[_position, _radius]],[]] call BIS_fnc_randomPos;
+				_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 			};
 			// systemChat format ["Position : %1", _pos];
 			private _groups_parameters = [_pos, EAST, 3];
@@ -75,11 +75,9 @@ do
 			{
 				// systemChat "Player too far :\";
 				{
-					{
-						deleteVehicle _x;
-					} forEach units _x;
-					deleteGroup _x;
-				} forEach _patrolsGroups;
+					deleteVehicle _x;
+				} forEach units _x;
+				deleteGroup _x;
 			};
 		};
 	} forEach _patrolsGroups;
