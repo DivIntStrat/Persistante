@@ -10,8 +10,8 @@ for "_i" from 1 to 2 do {
 	[14100,900,2000],
 	[
 		[
-			_positionMission select 0, // pos marker
-			{mission1.sqf}, //exec on clic
+			_positionMission select 0,
+			{execVM "mission1.sqf"},
 			"Recherche", // name
 			"This is mission one", // short description
 			"Joueurs D. I. S.",
@@ -21,7 +21,7 @@ for "_i" from 1 to 2 do {
 		],
 		[
 			_positionMission select 1,
-			{mission2.sqf},
+			{execVM "mission2.sqf"},
 			"2nd Mission",
 			"This is mission two",
 			"Joueurs D. I. S.",
