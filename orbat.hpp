@@ -6,7 +6,7 @@ class CfgORBAT
 		idType = 0;	// Unit ID type
 		side = "West"; // Unit side from CfgChainOfCommand >> Sides
 		type = "HQ"; // Unit type from CfgChainOfCommand >> Types
-		insignia = ""; // Unit insignia, displayed in ORBAT background and in tooltip
+		insignia = "C:\Users\Hhaine\Documents\Arma 3\mpmissions\Testpersistante.Altis\dis.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
 		colorInsignia[] = {0,0,1,1}; // Insignia image color (white default), can be either RGBA array, or class from CfgMarkerColors
 		commander = ""; // Name of unit commander. Can be either direct name, or class from CfgWorlds >> GenericNames (random name from the list is then selected)
 		commanderRank = ""; // Rank of unit commander (by default selected based on unit size)
@@ -16,7 +16,7 @@ class CfgORBAT
 		// %2 - Type (e.g. "Infantry")
 		// %3 - Size (e.g. "Division")
 		textShort = "D. I. S.";
-		texture = ""; // Custom texture, will replace icon set by 'type' param.
+		texture = "C:\Users\Hhaine\Documents\Arma 3\mpmissions\Testpersistante.Altis\dis.paa"; // Custom texture, will replace icon set by 'type' param.
 		color[] = {0,0,1,1}; // Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors (e.g. color = "ColorWEST";)
 		description= ""; // A brief description of the group or unit.
 		assets[] = {}; // Will display pictures of all available assets to the unit commander:
