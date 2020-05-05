@@ -7,6 +7,7 @@
 		_position
 		_radius
 		_local_dificulty
+		_spawn_can_stop (optional)
 */
 
 private _patrolsGroups = [];
@@ -16,6 +17,8 @@ private _patrolsGroups = [];
 private _position = _this select 0;
 private _radius = _this select 1;
 private _local_dificulty = _this select 2;
+private _spawn_can_stop = _this select 3;
+if (isNil "_spawn_can_stop") then {_spawn_can_stop = false};
 
 
 private _closest_player_distance = {
@@ -29,10 +32,13 @@ private _closest_player_distance = {
 };
 
 
-private _delay = 30; // s (time between each loops)
+private _delay = 10; // s (time between each loops)
+private _big_delay = 10; // s (time between each loops)
 private _min_dist = 750; // m (stop spawn distance)
 private _max_dist = 3000; // m (start despawn distance)
 private _grp_spawn_cap = 2; // max number of group that can spawn each turn
+private _aera_captured = false;
+private _aera_engaged = false;
 
 
 while {true}
@@ -47,21 +53,46 @@ do
 	if (([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius))
 	then
 	{
-		for "_i" from 1 + count _patrolsGroups to (_groupsNumbers min (count _patrolsGroups + _grp_spawn_cap))
-		do
+		private _units_in_range = 0;
+		{_units_in_range = _units_in_range + count units _x;} forEach _patrolsGroups;
+		private _players_in_range = count (allPlayers select {_x distance _position < _radius});
+		private _condition_to_spawn = _units_in_range >= _players_in_range;
+		if ((_players_in_range == 0) && (_units_in_range > 0) && (_aera_engaged))
+		then
 		{
-		
-			// systemChat "Spawn 1 group";
-			private _pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
-			// systemChat format ["Position test : %1", _pos];
-			while {([_pos, _human_players] call _closest_player_distance < _min_dist) || ([_pos, _human_players] call _closest_player_distance > _max_dist)}
+			_aera_captured = false;
+			// systemChat "aera no longer under control";
+		};
+		if ((!_spawn_can_stop) || (_spawn_can_stop && _condition_to_spawn && !_aera_captured))
+		then
+		{
+			for "_i" from 1 + count _patrolsGroups to (_groupsNumbers min (count _patrolsGroups + _grp_spawn_cap))
 			do
 			{
-				_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
+				// systemChat "aera active";
+				// systemChat "Spawn 1 group";
+				private _pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
+				// systemChat format ["Position test : %1", _pos];
+				while {([_pos, _human_players] call _closest_player_distance < _min_dist) || ([_pos, _human_players] call _closest_player_distance > _max_dist)}
+				do
+				{
+					_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
+				};
+				// systemChat format ["Position : %1", _pos];
+				private _groups_parameters = [_pos, EAST, 3];
+				_patrolsGroups pushBack (_groups_parameters call BIS_fnc_spawnGroup);
 			};
-			// systemChat format ["Position : %1", _pos];
-			private _groups_parameters = [_pos, EAST, 3];
-			_patrolsGroups pushBack (_groups_parameters call BIS_fnc_spawnGroup);
+		}
+		else
+		{
+			if (_spawn_can_stop)
+			then
+			{
+				// systemChat "aera captured";
+				_aera_captured = true;
+				_aera_engaged = false;
+				sleep _big_delay;
+			};
 		};
 	};
 	
@@ -81,7 +112,13 @@ do
 			};
 		};
 	} forEach _patrolsGroups;
-	_patrolsGroups = _patrolsGroups select {(count units _x) > 0};
+	private _tmp = _patrolsGroups select {(count units _x) > 0};
+	if (count _tmp == count _patrolsGroups)
+	then
+	{
+		_aera_engaged = true;
+	};
+	_patrolsGroups = _tmp;
 
 	// WAYPOINTS
 	{
