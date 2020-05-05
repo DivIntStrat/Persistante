@@ -37,6 +37,7 @@ private _big_delay = 10; // s (time between each loops)
 private _min_dist = 750; // m (stop spawn distance)
 private _max_dist = 3000; // m (start despawn distance)
 private _grp_spawn_cap = 2; // max number of group that can spawn each turn
+private _garnison_ratio = 0.5;
 private _aera_captured = false;
 private _aera_engaged = false;
 
@@ -80,7 +81,19 @@ do
 				};
 				// systemChat format ["Position : %1", _pos];
 				private _groups_parameters = [_pos, EAST, 3];
-				_patrolsGroups pushBack (_groups_parameters call BIS_fnc_spawnGroup);
+				private _new_grp = _groups_parameters call BIS_fnc_spawnGroup;
+				_patrolsGroups pushBack _new_grp;
+				if (_garnison_ratio > random 1)
+				then
+				{
+					systemChat "garnison";
+					[_new_grp, getPos (units _new_grp select 0)] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+				}
+				else
+				{
+					systemChat "patrol";
+					[_new_grp, getPos (units _new_grp select 0), _radius] call bis_fnc_taskpatrol;
+				};
 			};
 		}
 		else
@@ -122,14 +135,19 @@ do
 
 	// WAYPOINTS
 	{
+		systemChat format ["Group %1 : %2", _x, waypoints _x];
 		// remove previous waypoints
-		for "_j" from count waypoints _x - 1 to 0 step -1
-		do
+		if (count waypoints _x > 1)
+		then
 		{
-			deleteWaypoint [_x, _j];
+			for "_j" from count waypoints _x - 1 to 0 step -1
+			do
+			{
+				deleteWaypoint [_x, _j];
+			};
+			// set nexts waypoints
+			[_x, getPos (units _x select 0), _radius] call bis_fnc_taskpatrol;
 		};
-		// set nexts waypoints
-		[_x, getPos (units _x select 0), _radius] call bis_fnc_taskpatrol;
 	} forEach _patrolsGroups;
 	sleep _delay;
 };
