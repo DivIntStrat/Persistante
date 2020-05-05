@@ -54,8 +54,7 @@ do
 	if (([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius))
 	then
 	{
-		private _units_in_range = 0;
-		{_units_in_range = _units_in_range + count units _x;} forEach _patrolsGroups;
+		private _units_in_range = count (allUnits select {((_x distance _position) < _radius) && ((side _x) == east)});
 		private _players_in_range = count (allPlayers select {_x distance _position < _radius});
 		private _condition_to_spawn = _units_in_range >= _players_in_range;
 		if ((_players_in_range == 0) && (_units_in_range > 0) && (_aera_engaged))
@@ -86,12 +85,12 @@ do
 				if (_garnison_ratio > random 1)
 				then
 				{
-					systemChat "garnison";
-					[_new_grp, getPos (units _new_grp select 0)] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+					// systemChat "garnison";
+					[_new_grp, _position] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 				}
 				else
 				{
-					systemChat "patrol";
+					// systemChat "patrol";
 					[_new_grp, getPos (units _new_grp select 0), _radius] call bis_fnc_taskpatrol;
 				};
 			};
@@ -135,7 +134,7 @@ do
 
 	// WAYPOINTS
 	{
-		systemChat format ["Group %1 : %2", _x, waypoints _x];
+		// systemChat format ["Group %1 : %2", _x, waypoints _x];
 		// remove previous waypoints
 		if (count waypoints _x > 1)
 		then
