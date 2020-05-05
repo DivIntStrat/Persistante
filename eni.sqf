@@ -52,7 +52,7 @@ do
 		{
 		
 			// systemChat "Spawn 1 group";
-			private _pos = [[[_position, _radius]],[]] call BIS_fnc_randomPos;
+			private _pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 			// systemChat format ["Position test : %1", _pos];
 			while {([_pos, _human_players] call _closest_player_distance < _min_dist) || ([_pos, _human_players] call _closest_player_distance > _max_dist)}
 			do
