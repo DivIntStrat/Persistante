@@ -86,7 +86,7 @@ do
 				then
 				{
 					// systemChat "garnison";
-					[_new_grp, _position] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+					[_new_grp, getPos nearestBuilding (units _new_grp select 0)] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
 				}
 				else
 				{
