@@ -1,5 +1,5 @@
 _Display = call BIS_fnc_displayMission;
-currMiss = 0
+currMiss = 0;
 
 private _positionMission = [];
 for "_i" from 1 to 2 do {
