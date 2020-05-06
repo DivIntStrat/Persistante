@@ -1,4 +1,5 @@
 // \mission1\
+currMiss = 1;
 player createDiaryRecord ["Diary", ["Titre", "texte"]];
 systemChat "This is mission 1";
 

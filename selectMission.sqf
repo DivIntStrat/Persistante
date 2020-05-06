@@ -22,7 +22,17 @@ for "_i" from 1 to 2 do {
 		],
 		[
 			_positionMission select 1,
-			{execVM "mission2.sqf"},
+			{if (currMiss = 0) then {execVM "mission2.sqf"} else {execVM "nope.sqf"}},
+			"2nd Mission",
+			"This is mission two",
+			"Joueurs D. I. S.",
+			"",
+			2,
+			[ player ]
+		],
+		[
+			[14100,1000,2000],
+			{execVM "missionEnd.sqf"},
 			"2nd Mission",
 			"This is mission two",
 			"Joueurs D. I. S.",
