@@ -13,6 +13,8 @@ inf_groups = [
 	["rhsgref_ins_rifleman_akm", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman_aks74", "rhsgref_ins_grenadier", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_machinegunner"]
 ];
 
+currMiss = 0;
+
 execVM "infos.sqf";
 execVM "lights\generators.sqf";
 execVM "show_fps.sqf";

@@ -1,46 +1,54 @@
+/*
+	Mission selecton script :
+	Open strategic map with all avalaible missions.
+*/
 _Display = call BIS_fnc_displayMission;
-currMiss = 0;
+
 
 private _positionMission = [];
 for "_i" from 1 to 2 do {
     _positionMission pushBack (markerPos format ["mission%1",_i]);
 };
 
-[
-	_Display,
-	[14100,900,2000],
+
+private _missions = [
 	[
-		[
-			_positionMission select 0,
-			{if (currMiss == 0) then {execVM "mission1.sqf"} else {execVM "nope.sqf"}},
-			"Recherche", // name
-			"Recherche de caisses dans la région Nord Est", // short description
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-		[
-			_positionMission select 1,
-			{if (currMiss == 0) then {execVM "mission2.sqf"} else {execVM "nope.sqf"}},
-			"2nd Mission",
-			"This is mission two",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-		[
-			[14100,1000,2000],
-			{execVM "missionEnd.sqf"},
-			"Fin de mission",
-			"Confirmation de fin de mission",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		]
+		_positionMission select 0,
+		{execVM "mission1.sqf"},
+		"Recherche 1", // name
+		"Recherche de caisses dans la région Nord Est", // short description
+		"D. I. S.",
+		"",
+		2,
+		[ player ]
 	],
+	[
+		_positionMission select 1,
+		{execVM "mission2.sqf"},
+		"Recherche 2",
+		"This is mission two",
+		"D. I. S.",
+		"",
+		2,
+		[ player ]
+	],
+	[
+		[14100,1000,0],
+		{execVM "missionEnd.sqf"},
+		"Fin de mission",
+		"Confirmation de fin de mission",
+		"D. I. S.",
+		"",
+		2,
+		[ player ]
+	]
+];
+
+
+private _map_params = [
+	_Display,
+	[15000,15000,10000],
+	_missions,
 	[
 		[
 			[0,0,0],
@@ -59,4 +67,7 @@ for "_i" from 1 to 2 do {
 	"Choisissez une mission",
 	true,
 	"\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa"
-] call BIS_fnc_StrategicMapOpen;
+];
+
+
+_map_params call BIS_fnc_StrategicMapOpen;

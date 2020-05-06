@@ -38,7 +38,7 @@ private _near_road = {
   	getPos (_spawnVh select 0);
 };
 
-private _delay = 120; // s (time between each loops)
+private _delay = 10; // s (time between each loops)
 private _min_dist = 1500; // m (stop spawn distance)
 private _max_dist = 4500; // m (start despawn distance)
 private _vl_spawn_cap = 1; // max number of group that can spawn each turn
@@ -78,6 +78,11 @@ do
 			if ( ([getPos ((units _x) select 0), _human_players] call _closest_player_distance) > _max_dist )
 			then
 			{
+				if ((vehicle ((units _x) select 0)) != ((units _x) select 0))
+				then
+				{
+					deleteVehicle (vehicle ((units _x) select 0));
+				};
 				{
 					deleteVehicle _x;
 				} forEach units _x;
@@ -118,6 +123,11 @@ do
 
 
 {
+	if ((vehicle ((units _x) select 0)) != ((units _x) select 0))
+	then
+	{
+		deleteVehicle (vehicle ((units _x) select 0));
+	};
 	{
 		deleteVehicle _x;
 	} forEach units _x;
