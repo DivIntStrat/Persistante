@@ -3,14 +3,14 @@
 	args :
 		_position
 		_radius
-		_local_dificulty
+		_number_function
 		_type
 */
 
-
+// systemChat str(_this);
 private _position = _this select 0;
 private _radius = _this select 1;
-private _local_dificulty = _this select 2;
+private _number_function = _this select 2;
 private _type_array = _this select 3;
 
 private _closest_player_distance = {
@@ -41,7 +41,7 @@ private _near_road = {
 private _delay = 120; // s (time between each loops)
 private _min_dist = 1500; // m (stop spawn distance)
 private _max_dist = 4500; // m (start despawn distance)
-private _vl_spawn_cap = 2; // max number of group that can spawn each turn
+private _vl_spawn_cap = 1; // max number of group that can spawn each turn
 private _patrols_radius = 1.3 * _radius;
 
 private _all_vls = [];
@@ -51,8 +51,7 @@ while {currMiss != 0}
 do
 {
 	private _human_players = allPlayers - entities "HeadlessClient_F";
-	private _vl_numbers = floor ((count _human_players) * _local_dificulty);
-
+	private _vl_numbers = floor ([] call _number_function);
 	if (([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius))
 	then
 	{
@@ -76,7 +75,7 @@ do
 		if (!isNull ((units _x) select 0))
 		then
 		{
-			if ( ([((units _x) select 0), _human_players] call _closest_player_distance) > _max_dist )
+			if ( ([getPos ((units _x) select 0), _human_players] call _closest_player_distance) > _max_dist )
 			then
 			{
 				{

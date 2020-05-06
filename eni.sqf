@@ -6,7 +6,7 @@
 	args :
 		_position
 		_radius
-		_local_dificulty
+		_number_function
 		_spawn_can_stop (optional)
 */
 
@@ -16,7 +16,7 @@ private _patrolsGroups = [];
 // systemChat str(_this);
 private _position = _this select 0;
 private _radius = _this select 1;
-private _local_dificulty = _this select 2;
+private _number_function = _this select 2;
 private _spawn_can_stop = _this select 3;
 if (isNil "_spawn_can_stop") then {_spawn_can_stop = false};
 
@@ -46,7 +46,7 @@ while {currMiss != 0}
 do
 {
 	private _human_players = allPlayers - entities "HeadlessClient_F"; // removing Headless Clients
-	private _groupsNumbers = floor (1 + (count _human_players) * _local_dificulty);
+	private _groupsNumbers = floor ([] call _number_function);
 
 	// systemChat format ["Groups : %1", count _patrolsGroups];
 	// systemChat format ["Distance : %1", [_position, _human_players] call _closest_player_distance];
@@ -78,8 +78,8 @@ do
 				{
 					_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 				};
-				// systemChat format ["Position : %1", _pos];
-				private _groups_parameters = [_pos, EAST, 3];
+				private _type = inf_groups select (floor random (count inf_groups));
+				private _groups_parameters = [_pos, EAST, _type];
 				private _new_grp = _groups_parameters call BIS_fnc_spawnGroup;
 				_patrolsGroups pushBack _new_grp;
 				if (_garnison_ratio > random 1)
