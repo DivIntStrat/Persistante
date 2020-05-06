@@ -1,4 +1,5 @@
 _Display = call BIS_fnc_displayMission;
+currMiss = 0
 
 private _positionMission = [];
 for "_i" from 1 to 2 do {
@@ -11,7 +12,7 @@ for "_i" from 1 to 2 do {
 	[
 		[
 			_positionMission select 0,
-			{execVM "mission1.sqf"},
+			{if (currMiss = 0) then {execVM "mission1.sqf"} else {execVM "nope.sqf"}},
 			"Recherche", // name
 			"This is mission one", // short description
 			"Joueurs D. I. S.",
