@@ -12,20 +12,20 @@ for "_i" from 1 to 2 do {
 	[
 		[
 			_positionMission select 0,
-			{if (currMiss = 0) then {execVM "mission1.sqf"} else {execVM "nope.sqf"}},
+			{if (currMiss == 0) then {execVM "mission1.sqf"} else {execVM "nope.sqf"}},
 			"Recherche", // name
-			"This is mission one", // short description
-			"Joueurs D. I. S.",
+			"Recherche de caisses dans la région Nord Est", // short description
+			"D. I. S.",
 			"",
 			2,
 			[ player ]
 		],
 		[
 			_positionMission select 1,
-			{if (currMiss = 0) then {execVM "mission2.sqf"} else {execVM "nope.sqf"}},
+			{if (currMiss == 0) then {execVM "mission2.sqf"} else {execVM "nope.sqf"}},
 			"2nd Mission",
 			"This is mission two",
-			"Joueurs D. I. S.",
+			"D. I. S.",
 			"",
 			2,
 			[ player ]
@@ -33,9 +33,9 @@ for "_i" from 1 to 2 do {
 		[
 			[14100,1000,2000],
 			{execVM "missionEnd.sqf"},
-			"2nd Mission",
-			"This is mission two",
-			"Joueurs D. I. S.",
+			"Fin de mission",
+			"Confirmation de fin de mission",
+			"D. I. S.",
 			"",
 			2,
 			[ player ]
