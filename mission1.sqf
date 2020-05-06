@@ -4,7 +4,7 @@ player createDiaryRecord ["Diary", ["Titre", "texte"]];
 systemChat "This is mission 1";
 
 [markerPos "mission1", 5000, 15] execVM "eni.sqf";
-[markerPos "mission1", 5000] execVM "spawn.sqf";
+[markerPos "mission1", 5000] execVM "crates.sqf";
 
 {
 	[locationPosition _x, 400, 4, true] execVM "eni.sqf";

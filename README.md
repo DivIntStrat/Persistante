@@ -2,10 +2,10 @@
 
 Scripts :
 
-* Spawn :
+* Spawn crates :
 
 ```sqf
-execVM "spawn.sqf";
+execVM "crates.sqf";
 ```
 
 * Eni

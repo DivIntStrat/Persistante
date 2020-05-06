@@ -42,7 +42,7 @@ private _aera_captured = false;
 private _aera_engaged = false;
 
 
-while {true}
+while {currMiss != 0}
 do
 {
 	private _human_players = allPlayers - entities "HeadlessClient_F"; // removing Headless Clients
@@ -150,3 +150,11 @@ do
 	} forEach _patrolsGroups;
 	sleep _delay;
 };
+
+
+{
+	{
+		deleteVehicle _x;
+	} forEach units _x;
+	deleteGroup _x;
+} forEach _patrolsGroups;
