@@ -12,9 +12,11 @@ inf_groups = [
 	["rhsgref_ins_grenadier", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_specialist_aa", "rhsgref_ins_machinegunner"],
 	["rhsgref_ins_rifleman_akm", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman_aks74", "rhsgref_ins_grenadier", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_machinegunner"]
 ];
+vlAir = ["RHS_Mi8mt_vvsc","RHS_Mi8mt_vvsc","RHS_Mi8mt_vvsc","RHS_Mi8mtv3_Cargo_vvs","RHS_Su25SM_vvsc"];
 
 currMiss = 0;
 
 execVM "infos.sqf";
 execVM "lights\generators.sqf";
 execVM "show_fps.sqf";
+execVM "addLocations.sqf";
