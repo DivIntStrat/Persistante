@@ -4,9 +4,8 @@
 */
 _Display = call BIS_fnc_displayMission;
 
-
 private _positionMission = [];
-for "_i" from 1 to 2 do {
+for "_i" from 1 to 3 do {
     _positionMission pushBack (markerPos format ["mission%1",_i]);
 };
 
@@ -15,8 +14,8 @@ private _missions = [
 	[
 		_positionMission select 0,
 		{execVM "mission1.sqf"},
-		"Recherche 1", // name
-		"Recherche de caisses dans la région Nord Est", // short description
+		"Recherche NW", // name
+		"Recherche de caisses dans la région Nord Ouest", // short description
 		"D. I. S.",
 		"",
 		2,
@@ -25,8 +24,18 @@ private _missions = [
 	[
 		_positionMission select 1,
 		{execVM "mission2.sqf"},
-		"Recherche 2",
+		"Recherche de caisses dans la région Nord Est",
 		"This is mission two",
+		"D. I. S.",
+		"",
+		2,
+		[ player ]
+	],
+		[
+		_positionMission select 2,
+		{execVM "mission2.sqf"},
+		"Recherche S",
+		"Recherche de caisses dans la région de Zaros",
 		"D. I. S.",
 		"",
 		2,
