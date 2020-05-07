@@ -18,3 +18,4 @@ currMiss = 0;
 execVM "infos.sqf";
 execVM "lights\generators.sqf";
 execVM "show_fps.sqf";
+execVM "addLocations.sqf";
