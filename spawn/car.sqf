@@ -67,7 +67,7 @@ do
 				_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 			};
 			private _type = car select (floor random (count car));
-			private _groups_parameters = [_pos call _near_road, EAST, _type];
+			private _groups_parameters = [_pos call _near_road, CIVILIAN, _type];
 			_all_vls pushBack (_groups_parameters call BIS_fnc_spawnGroup);
 		};
 	};
