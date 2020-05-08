@@ -19,23 +19,27 @@ private _radius = _this select 1;
 	[locationPosition _x, 1000, {2 + (count (allPlayers - entities "HeadlessClient_F"))/5;}, hVls, true] execVM "spawn\vh.sqf";
 	[locationPosition _x, 1000, {3 + (count (allPlayers - entities "HeadlessClient_F"))/5;}, lVls, true] execVM "spawn\vh.sqf";
 	[locationPosition _x, 1000, {15 + (count (allPlayers - entities "HeadlessClient_F"))/3;}, true] execVM "spawn\inf.sqf";
+	[locationPosition _x, 1000, {15 + (count (allPlayers - entities "HeadlessClient_F"))/3;}] execVM "spawn\civ.sqf";
 }
 forEach nearestLocations [_center, ["NameCityCapital"], _radius];
 
 {
-	[locationPosition _x, 500, {(count (allPlayers - entities "HeadlessClient_F"))/6;}, hVls, true] execVM "spawn\vh.sqf";
-	[locationPosition _x, 500, {2 + (count (allPlayers - entities "HeadlessClient_F"))/5;}, lVls, true] execVM "spawn\vh.sqf";
+	[locationPosition _x, 400, {(count (allPlayers - entities "HeadlessClient_F"))/6;}, hVls, true] execVM "spawn\vh.sqf";
+	[locationPosition _x, 400, {2 + (count (allPlayers - entities "HeadlessClient_F"))/5;}, lVls, true] execVM "spawn\vh.sqf";
 	[locationPosition _x, 400, {10 + (count (allPlayers - entities "HeadlessClient_F"))/2;}, true] execVM "spawn\inf.sqf";
+	[locationPosition _x, 400, {15 + (count (allPlayers - entities "HeadlessClient_F"))/3;}] execVM "spawn\civ.sqf";
 }
 forEach nearestLocations [_center, ["Name", "NameCity"], _radius];
 
 {
-	[locationPosition _x, 300, {1 + (count (allPlayers - entities "HeadlessClient_F"))/6;}, lVls, true] execVM "spawn\vh.sqf";
+	[locationPosition _x, 200, {1 + (count (allPlayers - entities "HeadlessClient_F"))/6;}, lVls, true] execVM "spawn\vh.sqf";
 	[locationPosition _x, 200, {8 + (count (allPlayers - entities "HeadlessClient_F"))/2;}, true] execVM "spawn\inf.sqf";
+	[locationPosition _x, 200, {15 + (count (allPlayers - entities "HeadlessClient_F"))/3;}] execVM "spawn\civ.sqf";
 }
 forEach nearestLocations [_center, ["NameVillage"], _radius];
 
 {
 	[locationPosition _x, 100, {8 + (count (allPlayers - entities "HeadlessClient_F"))/4;}, true] execVM "spawn\inf.sqf";
+	[locationPosition _x, 100, {15 + (count (allPlayers - entities "HeadlessClient_F"))/3;}] execVM "spawn\civ.sqf";
 }
 forEach nearestLocations [_center, ["NameLocal"], _radius]; 
