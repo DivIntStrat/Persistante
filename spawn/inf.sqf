@@ -78,7 +78,7 @@ do
 				{
 					_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 				};
-				private _type = inf_groups select (floor random (count inf_groups));
+				private _type = inf select (floor random (count inf));
 				private _groups_parameters = [_pos, EAST, _type];
 				private _new_grp = _groups_parameters call BIS_fnc_spawnGroup;
 				_patrolsGroups pushBack _new_grp;
