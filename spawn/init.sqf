@@ -29,6 +29,14 @@ car = [
 ];
 
 inf_can_spawn = true;
+// SPAWN PARAMS
+//                PATROLS           LVL             HVL             CIV             CAR
+aera_param = [  [ 15 ,  3 ],    [  5 ,  2 ],    [  5 ,  2 ],    [  0 ,  0 ],    [  5 ,  0 ]  ];
+capi_param = [  [ 25 ,  3 ],    [  4 ,  2 ],    [  3 ,  1 ],    [ 11 ,  0 ],    [  4 ,  0 ]  ];
+citi_param = [  [ 20 ,  4 ],    [  3 ,  1 ],    [  1 ,  1 ],    [  7 ,  0 ],    [  2 ,  0 ]  ];
+vill_param = [  [ 10 ,  4 ],    [  3 ,  2 ],    [  0 ,  1 ],    [  5 ,  0 ],    [  0 ,  0 ]  ];
+loca_param = [  [  5 ,  2 ],    [  0 ,  1 ],    [  0 ,  0 ],    [  3 ,  0 ],    [  0 ,  0 ]  ];
+
 
 
 private _refresh_time = 10; // s (sleep time)
