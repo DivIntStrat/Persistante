@@ -11,9 +11,9 @@ private _radius = _this select 1;
 
 private _locations = (
 	[
-		["NameCityCapital", "NameCity"],
-		["NameCityCapital", "NameCity", "NameVillage"],
-		["NameCityCapital", "NameCity", "NameVillage", "NameLocal"]
+		["NameCityCapital", "NameCity", "Name"],
+		["NameCityCapital", "NameCity", "Name", "NameVillage"],
+		["NameCityCapital", "NameCity", "Name", "NameVillage", "NameLocal"]
 	] call BIS_fnc_arrayShuffle) select 0;
 
 private _loc = ((nearestLocations [_center, _locations, _radius]) call BIS_fnc_arrayShuffle) select 0;

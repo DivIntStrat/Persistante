@@ -5,7 +5,7 @@
 _Display = call BIS_fnc_displayMission;
 
 private _positionMission = [];
-for "_i" from 1 to 4 do {
+for "_i" from 1 to 6 do {
     _positionMission pushBack (markerPos format ["mission%1",_i]);
 };
 
@@ -48,9 +48,29 @@ then
 			[ player ]
 		],
 			[
-			_positionMission select 3,
+			markerPos "mission4",
 			{execVM "mission\4.sqf"},
-			"HVT",
+			"HVT 4",
+			"Trouver le chef enemi dans cette zone",
+			"D. I. S.",
+			"",
+			2,
+			[ player ]
+		],
+			[
+			markerPos "mission5",
+			{execVM "mission\5.sqf"},
+			"HVT 5",
+			"Trouver le chef enemi dans cette zone",
+			"D. I. S.",
+			"",
+			2,
+			[ player ]
+		],
+			[
+			markerPos "mission6",
+			{execVM "mission\6.sqf"},
+			"HVT 6",
 			"Trouver le chef enemi dans cette zone",
 			"D. I. S.",
 			"",
