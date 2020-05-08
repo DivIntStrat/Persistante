@@ -13,3 +13,32 @@ inf = [
 	["rhsgref_ins_grenadier", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_specialist_aa", "rhsgref_ins_machinegunner"],
 	["rhsgref_ins_rifleman_akm", "rhsgref_ins_rifleman", "rhsgref_ins_rifleman_aks74", "rhsgref_ins_grenadier", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_rifleman_RPG26", "rhsgref_ins_machinegunner"]
 ];
+
+
+inf_can_spawn = true;
+
+
+private _refresh_time = 10; // s (sleep time)
+private _max_inf = 150; // max number of units
+
+private _count_inf = {east countSide (allUnits select {vehicle _x == _x})};
+
+
+while {true}
+do
+{
+	private _current_inf = call _count_inf;
+
+	systemChat format ["Inf : %1", _current_inf];
+
+	if (_current_inf > _max_inf )
+	then
+	{
+		inf_can_spawn = false;
+	}
+	else
+	{
+		inf_can_spawn = true;
+	};
+	sleep _refresh_time;
+};

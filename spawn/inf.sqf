@@ -51,7 +51,7 @@ do
 	// systemChat format ["Groups : %1", count _patrolsGroups];
 	// systemChat format ["Distance : %1", [_position, _human_players] call _closest_player_distance];
 	// SPAWN
-	if (([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius))
+	if ((([_position, _human_players] call _closest_player_distance) < (_max_dist + _radius)) && inf_can_spawn)
 	then
 	{
 		private _units_in_range = count (allUnits select {((_x distance _position) < _radius) && ((side _x) == east)});
