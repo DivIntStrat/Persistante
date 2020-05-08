@@ -86,7 +86,7 @@ do
 					_pos = [[[_position, _radius]],["water"]] call BIS_fnc_randomPos;
 				};
 				private _type = _type_array select (floor random (count _type_array));
-				private _groups_parameters = [_pos call _near_road, EAST, [_type]];
+				private _groups_parameters = [_pos call _near_road, EAST, _type];
 				_all_vls pushBack (_groups_parameters call BIS_fnc_spawnGroup);
 			};
 		}
