@@ -28,6 +28,20 @@ car = [
 	["C_IDAP_Offroad_02_unarmed_F"], ["C_IDAP_Van_02_medevac_F"], ["C_IDAP_Truck_02_F"]
 ];
 
+
+hvt = [  ["O_officer_F"], ["rhs_vdv_officer_armored"], ["rhssaf_army_o_m10_digital_officer"], ["O_GEN_Commander_F"], ["O_G_officer_F"]  ];
+hvt_nationalities = [  "CSAT", "Russe", "Serbe", "Gendarme", "Mafieu"  ];
+
+rocks = [
+	"Land_Small_Stone_01_F", "Land_Small_Stone_02_F", "Land_Stone_big_F", "Land_Stone_medium_F", "Land_Stone_small_F", "Land_StoneSharp_big", "Land_StoneSharp_medium",
+	"Land_StoneSharp_small", "Land_StoneSharp_wall", "Land_BluntRock_apart", "Land_BluntRock_monolith", "Land_BluntRock_spike", "Land_BluntRock_wallH", "Land_BluntRock_wallV",
+	"Land_BluntStone_01", "Land_BluntStone_02", "Land_BluntStone_03", "Land_BluntStones_erosion", "Land_SharpRock_apart", "Land_SharpRock_monolith", "Land_SharpRock_spike",
+	"Land_SharpRock_wallH", "Land_SharpRock_wallV", "Land_SharpStone_01", "Land_SharpStone_02", "Land_SharpStone_03", "Land_SharpStones_erosion", "Land_Stone_big_W",
+	"Land_Stone_medium_W", "Land_Stone_small_W", "Land_StoneSharp_big_W", "Land_StoneSharp_medium_W", "Land_StoneSharp_small_W", "Land_StoneSharp_Wall_W", "Land_W_sharpRock_apart",
+	"Land_W_sharpRock_monolith", "Land_W_sharpRock_spike", "Land_W_sharpRock_wallH", "Land_W_sharpRock_wallV", "Land_W_sharpStone_01", "Land_W_sharpStone_02", "Land_W_sharpStone_03",
+	"Land_W_sharpStones_erosion"
+];
+
 inf_can_spawn = true;
 // SPAWN PARAMS
 //                PATROLS           LVL             HVL             CIV             CAR
@@ -36,6 +50,7 @@ capi_param = [  [ 25 ,  3 ],    [  4 ,  2 ],    [  3 ,  1 ],    [ 11 ,  0 ],    
 citi_param = [  [ 20 ,  4 ],    [  3 ,  1 ],    [  1 ,  1 ],    [  7 ,  0 ],    [  2 ,  0 ]  ];
 vill_param = [  [ 10 ,  4 ],    [  3 ,  2 ],    [  0 ,  1 ],    [  5 ,  0 ],    [  0 ,  0 ]  ];
 loca_param = [  [  5 ,  2 ],    [  0 ,  1 ],    [  0 ,  0 ],    [  3 ,  0 ],    [  0 ,  0 ]  ];
+hvt_params = [  [  5 ,  2 ],    [  0 ,  1 ],    [  0 ,  0 ],    [  0 ,  0 ],    [  0 ,  0 ]  ];
 
 
 

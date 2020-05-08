@@ -41,7 +41,7 @@ private _near_road = {
 		_rad = _rad + 50;
 		_spawnVh = _pos nearRoads _rad;
 	};
-	_spawnVh call BIS_fnc_arrayShuffle;
+	_spawnVh = _spawnVh call BIS_fnc_arrayShuffle;
   	getPos (_spawnVh select 0);
 };
 
