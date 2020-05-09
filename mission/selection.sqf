@@ -2,11 +2,57 @@
 	Mission selecton script :
 	Open strategic map with all avalaible missions.
 */
+
 _Display = call BIS_fnc_displayMission;
 
-private _positionMission = [];
-for "_i" from 1 to 6 do {
-    _positionMission pushBack (markerPos format ["mission%1",_i]);
+
+private _recherche_mission = {
+	/*
+	args :
+		_mission_number
+		_center
+		_radius
+	*/
+	[ 
+		_this select 1, 
+		compile format ["%1 execVM 'mission\recherche.sqf';", _this],
+		"Recherche de caisses", 
+		format ["Recherche de caisses numéro %1", _this select 0], 
+		"D. I. S.", 
+		"", 
+		2, 
+		[ player ] 
+	];
+};
+
+
+private _hvt_mission = {
+	/*
+	args :
+		_mission_number
+		_center
+		_radius
+	*/
+	[ 
+		_this select 1, 
+		compile format ["%1 execVM 'mission\hvt.sqf';", _this],
+		"HVT", 
+		format ["Mission HVT numéro %1", _this select 0], 
+		"D. I. S.", 
+		"", 
+		2, 
+		[ player ] 
+	];
+};
+
+private _start_with = {
+	_start = "@";
+	while {count ((_this select 0) select {_start in _x}) != 0}
+	do
+	{
+		_start = _start + "@";
+	};
+	(_this select 0) select {(_start + (_this select 1)) in (_start + _x)}
 };
 
 
@@ -16,74 +62,26 @@ private _missions = [];
 if (currMiss == 0)
 then
 {
-	_missions = [
-		[
-			_positionMission select 0,
-			{execVM "mission\1.sqf"},
-			"Recherche Nord Ouest",
-			"Recherche de caisses dans la région Nord Ouest",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-		[
-			_positionMission select 1,
-			{execVM "mission\2.sqf"},
-			"Recherche de caisses dans la région Nord Est",
-			"Recherche Nord Est",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-			[
-			_positionMission select 2,
-			{execVM "mission\3.sqf"},
-			"Recherche Sud",
-			"Recherche de caisses dans la région de Zaros",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-			[
-			markerPos "mission4",
-			{execVM "mission\4.sqf"},
-			"HVT 4",
-			"Trouver le chef enemi dans cette zone",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-			[
-			markerPos "mission5",
-			{execVM "mission\5.sqf"},
-			"HVT 5",
-			"Trouver le chef enemi dans cette zone",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		],
-			[
-			markerPos "mission6",
-			{execVM "mission\6.sqf"},
-			"HVT 6",
-			"Trouver le chef enemi dans cette zone",
-			"D. I. S.",
-			"",
-			2,
-			[ player ]
-		]
-	];
+	private _m_num = 100;
+	{
+		// systemChat format ["caisses : %1", _x];
+		_m_num = _m_num + 1;
+		private _rad = parseNumber ((_x splitString " ") select 1);
+		_missions pushBack ([_m_num, markerPos _x, _rad] call _recherche_mission);
+	} forEach ([allMapMarkers, "recherche "] call _start_with);
+	private _m_num = 200;
+	{
+		// systemChat format ["hvt : %1", _x];
+		_m_num = _m_num + 1;
+		private _rad = parseNumber ((_x splitString " ") select 1);
+		_missions pushBack ([_m_num, markerPos _x, _rad] call _hvt_mission);
+	} forEach ([allMapMarkers, "hvt "] call _start_with);
 }
 else
 {
 	_missions = [
 		[
-			[14100,1000,0],
+			[15000,15000,0],
 			{execVM "mission\end.sqf"},
 			"Fin de mission",
 			"Confirmation de fin de mission",

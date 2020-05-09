@@ -55,7 +55,7 @@ hvt_params = [  [  5 ,  2 ],    [  0 ,  1 ],    [  0 ,  0 ],    [  0 ,  0 ],    
 
 
 private _refresh_time = 10; // s (sleep time)
-private _max_inf = 150; // max number of units
+private _max_inf = 50; // max number of units
 
 private _count_inf = {east countSide (allUnits select {vehicle _x == _x})};
 
