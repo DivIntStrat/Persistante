@@ -22,8 +22,8 @@ for "_i" from 1 to 10 do {
 private _cities = (nearestLocations [_position, ["NameCity", "NameCityCapital", "NameVillage"], _radius]) call BIS_fnc_arrayShuffle;
 private _numbers_selected = 1 + floor random 6;
 _cities resize _numbers_selected;
-_cities = _cities select {!isNull _x};
 _cities = _cities select {!isNil "_x"};
+_cities = _cities select {!isNull _x};
 
 {
 	private _center = locationPosition _x;

@@ -49,3 +49,10 @@ private _create_function = {
 	_radius,
 	(_spawn_params select 4) call _create_function
 ] execVM "spawn\car.sqf";
+
+// AIR
+[
+	_center,
+	_radius,
+	(_spawn_params select 5) call _create_function
+] execVM "spawn\air.sqf";
