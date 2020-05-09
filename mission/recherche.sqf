@@ -16,7 +16,7 @@ private _radius = _this select 2;
 
 currMiss = _mission_number;
 
-systemChat format ["This is RECHERCHE mission %1", _mission_number];
+// systemChat format ["This is RECHERCHE mission %1", _mission_number];
 
 private _briefing = format ["
 L’ennemi comptait se ravitailler via un avion-cargo qui a largué un nombre inconnu de caisses d’armes, de munitions, et d’équipement.

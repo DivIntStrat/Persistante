@@ -118,5 +118,5 @@ private _map_params = [
 	"\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa"
 ];
 
-
+waitUntil { !isNull _Display };
 _map_params call BIS_fnc_StrategicMapOpen;

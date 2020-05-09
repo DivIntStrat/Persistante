@@ -16,7 +16,7 @@ private _radius = _this select 2;
 
 currMiss = _mission_number;
 
-systemChat format ["This is HVT mission %1", _mission_number];
+// systemChat format ["This is HVT mission %1", _mission_number];
 
 private _briefing = format ["Trouvez le chef enemi dans la zone de %1 km et tuez le !", _radius/1000];
 
